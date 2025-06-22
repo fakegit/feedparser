@@ -7,9 +7,9 @@ requests a feed from a web server.
 
 The default User-Agent string looks like this:
 
-::
+..  code-block:: text
 
-    UniversalFeedParser/5.0.1 +http://feedparser.org/
+    feedparser/6.0.11 +https://github.com/kurtmckee/feedparser/
 
 If you are embedding :program:`Universal Feed Parser` in a larger application,
 you should change the User-Agent to your application name and
@@ -19,11 +19,11 @@ you should change the User-Agent to your application name and
 Customizing the User-Agent
 --------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml',
-    agent='MyApp/1.0 +http://example.com/')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml',
+    ... agent='MyApp/1.0 +http://example.com/')
 
 You can also set the User-Agent once, globally, and then call the ``parse``
 function normally.
@@ -32,11 +32,11 @@ function normally.
 Customizing the User-Agent permanently
 --------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
     >>> feedparser.USER_AGENT = "MyApp/1.0 +http://example.com/"
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
 
 
 :program:`Universal Feed Parser` also lets you set the referrer when you
@@ -49,9 +49,8 @@ override this.
 Customizing the referrer
 ------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml',
-    referrer='http://example.com/')
-
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml',
+    ... referrer='http://example.com/')

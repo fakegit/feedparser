@@ -135,10 +135,10 @@ For example, an xml:base on the root-level element sets the base
 xml:base on the root-level element
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/base.xml")
     >>> d.feed.link
     'http://example.org/index.html'
     >>> d.feed.generator_detail.href
@@ -151,10 +151,10 @@ An xml:base attribute on an <entry> overrides the xml:base on the parent <feed>.
 Overriding xml:base on an <entry>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/base.xml")
     >>> d.entries[0].link
     'http://example.org/archives/000001.html'
     >>> d.entries[0].author_detail.href
@@ -173,10 +173,10 @@ content.
 Relative links within embedded :abbr:`HTML (HyperText Markup Language)`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/base.xml")
     >>> d.entries[0].content[0].value
     '<p id="anchor1"><a href="http://example.org/archives/000001.html#anchor2">skip to anchor 2</a></p>
     <p>Some content</p>
@@ -190,10 +190,10 @@ The xml:base affects other attributes in the element in which it is declared.
 xml:base and sibling attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/base.xml")
     >>> d.entries[0].links[1].rel
     'service.edit'
     >>> d.entries[0].links[1].href
@@ -209,10 +209,10 @@ overridden by any child element that declares an xml:base attribute.
 Content-Location :abbr:`HTTP (Hypertext Transfer Protocol)` header
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/http_base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/http_base.xml")
     >>> d.feed.link
     'http://example.org/index.html'
     >>> d.entries[0].link
@@ -229,10 +229,10 @@ by any element that declares an xml:base attribute.
 Feed :abbr:`URL (Uniform Resource Locator)` as default base :abbr:`URI (Uniform Resource Identifier)`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse("http://feedparser.org/docs/examples/no_base.xml")
+    >>> d = feedparser.parse("$READTHEDOCS_CANONICAL_URL/examples/no_base.xml")
     >>> d.feed.link
     'http://feedparser.org/docs/examples/index.html
     >>> d.entries[0].link
@@ -253,10 +253,10 @@ but not in other contexts such as :ref:`reference.entry.link`.
 How to disable relative :abbr:`URI (Uniform Resource Identifier)` resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/base.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/base.xml')
     >>> d.entries[0].content[0].base
     'http://example.org/archives/000001.html'
     >>> print d.entries[0].content[0].value
@@ -264,11 +264,10 @@ How to disable relative :abbr:`URI (Uniform Resource Identifier)` resolution
     <p>Some content</p>
     <p id="anchor2">This is anchor 2</p>
     >>> feedparser.RESOLVE_RELATIVE_URIS = 0
-    >>> d2 = feedparser.parse('http://feedparser.org/docs/examples/base.xml')
+    >>> d2 = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/base.xml')
     >>> d2.entries[0].content[0].base
     'http://example.org/archives/000001.html'
     >>> print d2.entries[0].content[0].value
     <p id="anchor1"><a href="#anchor2">skip to anchor 2</a></p>
     <p>Some content</p>
     <p id="anchor2">This is anchor 2</p>
-

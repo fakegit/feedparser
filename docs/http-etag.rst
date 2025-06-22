@@ -18,13 +18,13 @@ status code (``304``) and no feed data.
 Using ETags to reduce bandwidth
 -------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d.etag
     '"6c132-941-ad7e3080"'
-    >>> d2 = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml', etag=d.etag)
+    >>> d2 = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml', etag=d.etag)
     >>> d2.status
     304
     >>> d2.feed
@@ -46,15 +46,15 @@ status code ``304`` and no feed data.
 Using Last-Modified headers to reduce bandwidth
 -----------------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d.modified
     Fri, 11 Jun 2012 23:00:34 GMT
     >>> d.modified_parsed
     (2004, 6, 11, 23, 0, 34, 4, 163, 0)
-    >>> d2 = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml', modified=d.modified)
+    >>> d2 = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml', modified=d.modified)
     >>> d2.status
     304
     >>> d2.feed
@@ -80,7 +80,7 @@ Clients should support both ETag and Last-Modified headers, as some servers supp
 
     You can control the behaviour of :abbr:`HTTP (Hypertext Transfer Protocol)`
     caches between your application and the origin server by using the
-    ``extra_headers`` parameter.  For example, you may want to send
+    ``request_headers`` parameter.  For example, you may want to send
     ``Cache-control: max-age=60`` to make the caches revalidate against the
     origin server unless their cached copy is less than a minute old.  Again,
     this should be used with consideration.

@@ -14,7 +14,7 @@ The easiest way is to embed the username and password in the feed
 
 In this example, the username is test and the password is basic.
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
     >>> d = feedparser.parse('http://test:basic@feedparser.org/docs/examples/basic_auth.xml')
@@ -36,7 +36,7 @@ Downloading a feed protected by digest authentication (the easy but horribly ins
 
 In this example, the username is test and the password is digest.
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
     >>> d = feedparser.parse('http://test:digest@feedparser.org/docs/examples/digest_auth.xml')
@@ -52,7 +52,7 @@ HTTPBasicAuthHandler is part of the standard `urllib2 <http://docs.python.org/li
 Downloading a feed protected by :abbr:`HTTP (Hypertext Transfer Protocol)` basic authentication (the hard way)
 --------------------------------------------------------------------------------------------------------------
 
-::
+..  code-block:: python
 
     import urllib2, feedparser
 
@@ -69,14 +69,16 @@ Downloading a feed protected by :abbr:`HTTP (Hypertext Transfer Protocol)` basic
     # handlers is a list because there might be more than one
     # type of handler (urllib2 defines lots of different ones,
     # and you can build your own)
-    d = feedparser.parse('http://feedparser.org/docs/examples/basic_auth.xml',
-                         handlers=[auth])
+    d = feedparser.parse(
+        '$READTHEDOCS_CANONICAL_URL/examples/basic_auth.xml',
+        handlers=[auth],
+    )
 
 
 
 Digest authentication is handled in much the same way, by constructing an
 HTTPDigestAuthHandler and populating it with the necessary realm, host, user,
-and password information.  This is more secure than 
+and password information.  This is more secure than
 :ref:`stuffing the username and password in the URL <example.auth.inline.digest>`,
 since the password will be encrypted before being sent to the server.
 
@@ -84,21 +86,23 @@ since the password will be encrypted before being sent to the server.
 Downloading a feed protected by :abbr:`HTTP (Hypertext Transfer Protocol)` digest authentication (the secure way)
 -----------------------------------------------------------------------------------------------------------------
 
-::
+..  code-block:: python
 
     import urllib2, feedparser
 
     auth = urllib2.HTTPDigestAuthHandler()
     auth.add_password('DigestTest', 'feedparser.org', 'test', 'digest')
-    d = feedparser.parse('http://feedparser.org/docs/examples/digest_auth.xml',
-                          handlers=[auth])
+    d = feedparser.parse(
+        '$READTHEDOCS_CANONICAL_URL/examples/digest_auth.xml',
+        handlers=[auth],
+    )
 
 
 The examples so far have assumed that you know in advance that the feed is
 password-protected.  But what if you don't know?
 
 If you try to download a password-protected feed without sending all the proper
-password information, the server will return an 
+password information, the server will return an
 :abbr:`HTTP (Hypertext Transfer Protocol)` status code ``401``.
 :program:`Universal Feed Parser` makes this status code available in
 ``d.status``.
@@ -116,15 +120,15 @@ information in the www-authenticate header is probably safe to ignore; the
 Determining that a feed is password-protected
 ---------------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/basic_auth.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/basic_auth.xml')
     >>> d.status
     401
     >>> d.headers['www-authenticate']
     'Basic realm="Use test/basic"'
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/digest_auth.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/digest_auth.xml')
     >>> d.status
     401
     >>> d.headers['www-authenticate']
@@ -132,4 +136,3 @@ Determining that a feed is password-protected
     nonce="+LV/uLLdAwA=5d77397291261b9ef256b034e19bcb94f5b7992a",
     algorithm=MD5,
     qop="auth"'
-

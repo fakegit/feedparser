@@ -15,10 +15,10 @@ You can access the basic elements of an Atom feed using :abbr:`RSS (Rich Site Su
 Accessing an Atom feed as an :abbr:`RSS (Rich Site Summary)` feed
 -----------------------------------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d['channel']['title']
     'Sample Feed'
     >>> d['channel']['link']
@@ -43,10 +43,10 @@ The same thing works in reverse: you can access :abbr:`RSS (Rich Site Summary)` 
 Accessing an :abbr:`RSS (Rich Site Summary)` feed as an Atom feed
 -----------------------------------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse(' http://feedparser.org/docs/examples/rss20.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/rss20.xml')
     >>> d.feed.subtitle_detail
     {'type': 'text/html',
     'base': 'http://feedparser.org/docs/examples/rss20.xml',

@@ -1,77 +1,103 @@
-[tool.poetry]
+[project]
 name = "feedparser"
-version = "6.0.2"
+version = "6.0.11"
 description = "Parse Atom/RSS/JSON feeds in Python"
 readme = "README.rst"
-
-repository = "https://github.com/kurtmckee/feedparser/"
-documentation = "https://feedparser.readthedocs.io/en/latest/"
-
-authors = ["Kurt McKee <contactme@kurtmckee.org>"]
+requires-python = ">=3.9"
+authors = [
+    { name = "Kurt McKee", email = "contactme@kurtmckee.org" }
+]
 license = "BSD-2-Clause"
-
 keywords = ["atom", "feed", "json", "rdf", "rss"]
 classifiers = [
-        "Development Status :: 5 - Production/Stable",
-        "Intended Audience :: Developers",
-        "Topic :: Text Processing :: Markup",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Text Processing :: Markup",
 ]
-include = ["feedparser/py.typed"]
+dependencies = [
+    "sgmllib3k==1.0.0",
+    "requests>=2.20.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.6"
-sgmllib3k = "^1.0.0"
-
-
-[tool.poetry.dev-dependencies]
-tox = "^3.20.1"
-Sphinx = "^3.4.1"
-scriv = "^0.10.0"
-
-# mypy depends on typed_ast, which doesn't work with PyPy3.
-# https://github.com/python/typed_ast/issues/111
-mypy = {version = "^0.910", markers = "implementation_name != 'pypy'"}
+[project.urls]
+Source = "https://github.com/kurtmckee/feedparser"
+Documentation = "https://feedparser.readthedocs.io/en/latest/"
+Changelog = "https://feedparser.readthedocs.io/en/latest/changelog/"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 
-[tool.tox]
-legacy_tox_ini = """
+# coverage
+# --------
 
-[tox]
-envlist = py{39, py3, 38, 37, 36}-{chardet, }, docs, mypy
-skip_missing_interpreters = True
-isolated_build = True
+[tool.coverage.run]
+parallel = true
+branch = true
+source = [
+    "feedparser",
+    "tests",
+]
 
-[testenv]
-deps =
-    chardet: chardet
+[tool.coverage.paths]
+source = [
+    "src",
+    "*/site-packages",
+]
 
-commands = {envpython} -Wd tests/runtests.py
+[tool.coverage.report]
+skip_covered = true
+fail_under = 93
 
-[testenv:docs]
-allowlist_externals = sphinx-build
-commands = sphinx-build -EWnq --keep-going -b html docs/ fpdocs/
+[tool.coverage.html]
+directory = "htmlcov/"
 
-[testenv:mypy]
-commands = mypy feedparser
-deps =
-    mypy
-    types-chardet
-"""
 
+# isort
+# -----
+
+[tool.isort]
+profile = "black"
+
+
+# mypy
+# ----
+
+[tool.mypy]
+packages = "feedparser"
+show_error_codes = true
+sqlite_cache = true
+
+
+# pytest
+# ------
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "error",
+]
+
+
+# scriv
+# -----
 
 [tool.scriv]
-version = "literal: feedparser/__init__.py: __version__"
-categories = ["Added", "Fixed", "Removed", "Changed", "Deprecated", "Security"]
+version = "literal: pyproject.toml: project.version"
+categories = [
+    "Python support",
+    "Added",
+    "Fixed",
+    "Removed",
+    "Changed",
+    "Deprecated",
+    "Security",
+    "Documentation",
+    "Project development",
+]
 entry_title_template = "{{ version }} - {{ date.strftime('%Y-%m-%d') }}"
 format = "rst"
 fragment_directory = "changelog.d"
 insert_marker = "scriv-insert-here"
 main_branches = ["develop", "master"]
 new_fragment_template = "file: fragment-template.rst.txt"
-
-[tool.mypy]
-show_error_codes = true

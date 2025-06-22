@@ -21,10 +21,10 @@ parse the feed.
 Noticing temporary redirects
 ----------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/temporary.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/temporary.xml')
     >>> d.status
     302
     >>> d.href
@@ -48,10 +48,10 @@ banned from the server.
 Noticing permanent redirects
 ----------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/permanent.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/permanent.xml')
     >>> d.status
     301
     >>> d.href
@@ -72,11 +72,9 @@ may get you banned from the server.
 Noticing feeds marked "gone"
 ----------------------------
 
-::
+..  code-block:: pycon
 
-    
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/gone.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/gone.xml')
     >>> d.status
     410
-

@@ -1,9 +1,15 @@
-feedparser - Parse Atom and RSS feeds in Python.
+..
+    This file is part of feedparser.
+    Copyright 2010-2025 Kurt McKee <contactme@kurtmckee.org>
+    Copyright 2002-2008 Mark Pilgrim
+    Released under the BSD 2-clause license.
 
-| Copyright 2010-2021 Kurt McKee <contactme@kurtmckee.org>
-| Copyright 2002-2008 Mark Pilgrim
+feedparser
+##########
 
-feedparser is open source. See the LICENSE file for more information.
+Parse Atom and RSS feeds in Python.
+
+----
 
 
 Installation
@@ -11,7 +17,7 @@ Installation
 
 feedparser can be installed by running pip:
 
-..  code-block:: shell
+..  code-block:: console
 
     $ pip install feedparser
 
@@ -23,33 +29,26 @@ The feedparser documentation is available on the web at:
 
     https://feedparser.readthedocs.io/en/latest/
 
-It is also included in its source format, ReST, in the ``docs/`` directory.
-To build the documentation you'll need the Sphinx package, which is available at:
+It can also be built and browsed locally using `tox`_:
 
-    https://www.sphinx-doc.org/
+..  code-block:: console
 
-You can then build HTML pages using a command similar to:
+    $ tox run -e docs
 
-..  code-block:: shell
-
-    $ sphinx-build -b html docs/ fpdocs
-
-This will produce HTML documentation in the ``fpdocs/`` directory.
+This will produce HTML documentation in the ``build/docs/`` directory.
 
 
 Testing
 =======
 
-Feedparser has an extensive test suite, powered by tox. To run it, type this:
+Feedparser has an extensive test suite, powered by `tox`_:
 
-..  code-block:: shell
+..  code-block:: console
 
-    $ python -m venv venv
-    $ source venv/bin/activate  # or "venv\bin\activate.ps1" on Windows
-    (venv) $ python -m pip install --upgrade pip
-    (venv) $ python -m pip install poetry
-    (venv) $ poetry update
-    (venv) $ tox
+    $ tox run-parallel
 
-This will spawn an HTTP server that will listen on port 8097. The tests will
-fail if that port is in use.
+
+..  Links
+..  =====
+..
+..  _tox: https://tox.wiki/

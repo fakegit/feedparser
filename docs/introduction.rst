@@ -12,7 +12,7 @@ Notation)` feeds.  It also parses several
 popular extension modules, including Dublin Core and Apple's :program:`iTunes`
 extensions.
 
-To use :program:`Universal Feed Parser`, you will need :program:`Python` 3.6 or
+To use :program:`Universal Feed Parser`, you will need :program:`Python` 3.8 or
 later. :program:`Universal Feed Parser` is not meant
 to run standalone; it is a module for you to use as part of a larger
 :program:`Python` program.
@@ -25,14 +25,17 @@ filename, or a raw string containing feed data in any format.
 
 Parsing a feed from a remote :abbr:`URL (Uniform Resource Locator)`
 -------------------------------------------------------------------
-::
 
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d['feed']['title']
     'Sample Feed'
 
+
+Parsing a feed from a local file
+--------------------------------
 
 The following example assumes you are on Windows, and that you have saved a feed at :file:`c:\\incoming\\atom10.xml`.
 
@@ -41,10 +44,7 @@ The following example assumes you are on Windows, and that you have saved a feed
     :program:`Universal Feed Parser` works on any platform that can run
     :program:`Python`; use the path syntax appropriate for your platform.
 
-Parsing a feed from a local file
---------------------------------
-::
-
+..  code-block:: pycon
 
     >>> import feedparser
     >>> d = feedparser.parse(r'c:\incoming\atom10.xml')
@@ -56,8 +56,8 @@ Parsing a feed from a local file
 
 Parsing a feed from a string
 ----------------------------
-::
 
+..  code-block:: pycon
 
     >>> import feedparser
     >>> rawdata = """<rss version="2.0">
@@ -72,7 +72,3 @@ Parsing a feed from a string
 
 Values are returned as :program:`Python` Unicode strings (except when they're
 not -- see :ref:`advanced.encoding` for all the gory details).
-
-.. seealso::
-
-   `Introduction to Python Unicode strings <http://docs.python.org/tut/node5.html#SECTION005130000000000000000>`_

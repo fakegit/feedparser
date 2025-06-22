@@ -7,8 +7,8 @@ ID.  The publication date comes from the pubDate element, and the entry ID comes
 from the guid element.
 
 This sample :abbr:`RSS (Rich Site Summary)` feed is at
-`http://feedparser.org/docs/examples/rss20.xml
-<http://feedparser.org/docs/examples/rss20.xml>`_.
+`$READTHEDOCS_CANONICAL_URL/examples/rss20.xml
+<$READTHEDOCS_CANONICAL_URL/examples/rss20.xml>`_.
 
 .. sourcecode:: xml
 
@@ -38,11 +38,11 @@ The channel elements are available in ``d.feed``.
 
 Accessing Common Channel Elements
 ---------------------------------
-::
 
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/rss20.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/rss20.xml')
     >>> d.feed.title
     'Sample Feed'
     >>> d.feed.link
@@ -59,11 +59,11 @@ The items are available in ``d.entries``, which is a list.  You access items in 
 
 Accessing Common Item Elements
 ------------------------------
-::
 
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/rss20.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/rss20.xml')
     >>> d.entries[0].title
     'First item title'
     >>> d.entries[0].link

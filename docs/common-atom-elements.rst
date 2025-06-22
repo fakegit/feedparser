@@ -5,8 +5,8 @@ Atom feeds generally contain more information than :abbr:`RSS (Rich Site Summary
 feeds (because more elements are required), but the most commonly used elements
 are still title, link, subtitle/description, various dates, and ID.
 
-This sample Atom feed is at `http://feedparser.org/docs/examples/atom10.xml
-<http://feedparser.org/docs/examples/atom10.xml>`_.
+This sample Atom feed is at `$READTHEDOCS_CANONICAL_URL/examples/atom10.xml
+<$READTHEDOCS_CANONICAL_URL/examples/atom10.xml>`_.
 
 .. sourcecode:: xml
 
@@ -64,10 +64,10 @@ The feed elements are available in ``d.feed``.
 Accessing Common Feed Elements
 ------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d.feed.title
     'Sample feed'
     >>> d.feed.link
@@ -88,10 +88,10 @@ the order in which they appear in the original feed, so the first entry is
 Accessing Common Entry Elements
 -------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d.entries[0].title
     'First entry title'
     >>> d.entries[0].link

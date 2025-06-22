@@ -11,10 +11,10 @@ list.
 Accessing contributors
 ----------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> e = d.entries[0]
     >>> len(e.contributors)
     2
@@ -35,10 +35,10 @@ MIME-style content type, and its rel attribute.
 Accessing multiple links
 ------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> e = d.entries[0]
     >>> len(e.links)
     4

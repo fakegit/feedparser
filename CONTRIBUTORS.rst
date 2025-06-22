@@ -1,7 +1,7 @@
 Contributors
 ============
 
-feedparser is written and maintained by `Kurt McKee <http://kurtmckee.org/>`_.
+feedparser is written and maintained by `Kurt McKee <https://kurtmckee.org/>`_.
 It was originally written by Mark Pilgrim.
 
 Many people have contributed to feedparser. They are listed below in
@@ -14,6 +14,7 @@ bug report!
 * `John Beimler <http://john.beimler.org/>`_
 * `Beat Bolli <https://drbeat.li/>`_
 * `François Boulogne <http://www.sciunto.org/>`_
+* `Adrian Damian <https://death.andgravity.com/>`_
 * `Jason Diamond <http://injektilo.org/>`_
 * `Jakub Kuczys <https://github.com/jack1142>`_
 * `Fazal Majid <https://majid.info/blog/>`_
@@ -27,3 +28,4 @@ bug report!
 * `Bernd Schlapsi <https://github.com/brot>`_
 * `Aaron Swartz <http://www.aaronsw.com/>`_
 * `Jakub Wilk <http://jwilk.net/>`_
+* `Nestor Rodriguez <https://github.com/n3s7or>`_

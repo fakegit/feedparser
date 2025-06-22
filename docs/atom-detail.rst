@@ -10,10 +10,10 @@ the value itself.
 Detailed Information on Feed Elements
 -------------------------------------
 
-::
+..  code-block:: pycon
 
     >>> import feedparser
-    >>> d = feedparser.parse('http://feedparser.org/docs/examples/atom10.xml')
+    >>> d = feedparser.parse('$READTHEDOCS_CANONICAL_URL/examples/atom10.xml')
     >>> d.feed.title_detail
     {'type': 'text/plain',
     'base': 'http://example.org/',
@@ -46,4 +46,3 @@ Detailed Information on Feed Elements
     'base': 'http://example.org/entry/3',
     'language': 'en-US'
     'value': '<div>Watch out for <span> nasty tricks</span></div>'}
-
